@@ -9,22 +9,47 @@
 <body>
     <?php
 
-    $s = $_GET['s']
+    $s = $_GET['s'];
     switch($s)
     {
         case "sonuc":
+            $sayi = $_GET['sayi'];
+            ?>
+            <table border="1">
+                <tr>
+                    <th>Sira</th>
+                    <th>Isim Soyisim</th>
+                    <th>Ogrenci Numara</th>
+                </tr>
+                <?php 
+                for($i=0;$i<=$sayi;$i++){
+                    $adsoyad = $_POST["ogrAd".$i];
+                    $ogrenciNo = $_POST["ogrNo".$i];
+                    ?>
+                    <tr>
+                        <td><?=$i?></td>
+                        <td><?php $adsoyad?></td>
+                        <td><?php $ogrenciNo?></td>
+                    </tr>
+              <?php } //Ikinci for un kapanyan yeri 
+                ?>
+
+            </table>
+        <?php     
         break;
 
         case "san": ?>
-        <form name ="form2" id = "form2" method= "post" action="?s=sonuc"> 
+        <form name ="form2" id = "form2" method= "post" action="?s=sonuc&sayi=<?=$sayi?>"> 
             <?php 
 
-            for($i =; $i<@$_POST['sayi'];$i++){ ?>
-            <label for="ogrAd"> Ogrenci Adi: <input type="text" name="ogrAd" id="ogrAd"></label><br>
-            <label for="ogrNo"> Ogrenci No: <input type="text" name="ogrNo" id="ogrNo"></label><br><br>
-            <input type="submit" name="button" value="Kaydet">
-          <?php  }
-            ?>
+            for($i =0;$i<@$_POST["sayi"];$i++){ ?>
+            <fieldset>
+                <legend><?=$i ?>.Kisi</legend>
+                <label for="ogrAd<?=$i?>"> Ogrenci Adi: <input type="text" name="ogrAd<?=$i?>" id="ogrAd<?=$i?>"></label><br>
+            <label for="ogrNo<?=$i?>"> Ogrenci No: <input type="text" name="ogrNo<?=$i?>" id="ogrNo<?=$i?>"></label><br><br>
+            </fieldset>
+          <?php  } ?>
+            <input type="submit" name="button" value="Listele">
         </form>
 
         <?php break;
@@ -37,7 +62,7 @@
         </form>
         <?php break;
 
-    } 
+    }
     ?>
 
 </body>

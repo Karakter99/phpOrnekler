@@ -69,6 +69,7 @@ switch($s) {
   <input type="submit" name="button" id="button" value="Form Göster" />
 </form>
 <?
+break;
 }
 ?>
 </body>
